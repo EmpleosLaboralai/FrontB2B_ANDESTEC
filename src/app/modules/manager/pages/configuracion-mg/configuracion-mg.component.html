@@ -1,0 +1,40 @@
+<div class="container-landing">
+  <div style="width: 95%; margin-left: 20px">
+    <app-nav-config></app-nav-config>
+  </div>
+
+  <div class="d-flex flex-row" style="margin: 10px">
+    <app-menu-config
+      (statePerfil)="showPerfil = $event"
+      (statePwd)="showPwd = $event"
+      (stateClick)="showModal($event)"
+    ></app-menu-config>
+    <app-cambiar-perfil *ngIf="showPerfil" class="d-none d-sm-block" ></app-cambiar-perfil>
+    <app-cambiar-pwd *ngIf="showPwd" class="d-none d-sm-block"></app-cambiar-pwd>
+  </div>
+</div>
+
+
+<div class="modal" tabindex="-1" id="modalEdit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+        <span *ngIf="showPerfil">Editar Perfil</span>
+        <span *ngIf="showPwd">Editar contraseña</span>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-cambiar-perfil *ngIf="showPerfil"></app-cambiar-perfil>
+        <app-cambiar-pwd *ngIf="showPwd"></app-cambiar-pwd>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>

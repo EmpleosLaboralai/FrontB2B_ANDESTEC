@@ -1,0 +1,162 @@
+<div class="d-flex justify-content-center" *ngIf="bol_loading">
+  <div>
+    <p>cargando empleo</p>
+  </div>
+  <br />
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="m-5" style="background-color: #F6F8FF;">
+  <img src="assets/images/laboral_banner_manager.png" />
+</div>
+
+<div class="m-sm-1 m-md-5 p-4 border rounded">
+  <div class="d-flex justify-content-between">
+    <h1 class="titulo">{{ empleo.job_title }}</h1>
+    <button class="btn btn-light"(click)="copyText()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-link"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"
+        />
+        <path
+          d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z"
+        />
+      </svg>
+      Copiar oferta empleo
+    </button>
+  </div>
+
+  <div class="texto-cab">Publicado en {{ empleo.date_entry | date }}</div>
+  <div class="texto-cab">{{ empleo.location }}</div>
+
+  <div class="mt-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-briefcase-fill"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5"
+      />
+      <path
+        d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85z"
+      />
+    </svg>
+    Temporal
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-display ml-3"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4q0 1 .25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75Q6 13 6 12H2s-2 0-2-2zm1.398-.855a.76.76 0 0 0-.254.302A1.5 1.5 0 0 0 1 4.01V10c0 .325.078.502.145.602q.105.156.302.254a1.5 1.5 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.76.76 0 0 0 .254-.302 1.5 1.5 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.76.76 0 0 0-.302-.254A1.5 1.5 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145"
+      />
+    </svg>
+    {{empleo.modality}}
+  </div>
+  <hr />
+
+  <div>
+    <p class="subtitulo">DESCRIPCIÓN DEL PUESTO VACANTE</p>
+    <p class="texto">
+      {{ empleo.req_qualifications }}
+    </p>
+  </div>
+
+  <div>
+    <p class="subtitulo">RESPONSABILIDADES Y ASIGNACIONES</p>
+    <div class="texto">
+      <ul>
+        <li *ngFor="let item of empleo.key_responsabilities.split('.')">
+          - {{item}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <p class="subtitulo">REQUISITOS Y CALIFICACIONES</p>
+    <div class="texto">      
+      <ul>
+        <li *ngFor="let item of empleo.techskill_tool.split('.')">
+          - {{item}}
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div>
+    <p class="texto-cab">
+      Creemos que el presente es oportuno y la inclusión transforma, por eso,
+      todas las personas son bienvenidas en nuestras vacantes, para promover un
+      ambiente de trabajo con respeto, inclusivo y equidad.
+    </p>
+    <p class="texto-cab">
+      ¿Te gustaría subirte en este desafío con nosotros? 🚀 #JOINLABORALAI
+    </p>
+  </div>
+
+  <div>
+    <p class="subtitulo">
+      EN LABORAL.AI, EL DINAMISMO Y LA TRANSFORMACIÓN CONSTANTE FORMAN PARTE DEL
+      DÍA A DÍA
+    </p>
+    <p class="texto">
+      En Laboral.ai contamos con un equipo de especialistas con experiencia
+      identificando talento en el sector, y te ayudamos a optimizar costos y
+      tiempos en la contratación de recursos eficientes. Algunos de los perfiles
+      que reclutamos son: Desarrollador de software (Full stack, Front end y
+      Back end), Arquitecto (Software, Soluciones, Big Data, Ciberseguridad e
+      Infraestructura), Big data, Business Intelligence, Cyber Security Manager,
+      Product Owner, UX / UI, DevOps.
+    </p>
+  </div>
+  <div>
+    <a href="https://laboral.ai/" target="_blank" class="btn btn-primary">
+      Aplicar
+    </a>
+
+    <button class="btn btn-light ml-4" (click)="copyText()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-link"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"
+        />
+        <path
+          d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z"
+        />
+      </svg>
+      Copiar oferta empleo
+    </button>    
+  </div>
+
+  <div class="mt-4 w-100 text-center">
+    <p>
+      <small>
+        Powered by Laboral.ai Todos los derechos reservados.
+      </small>
+    </p>
+  </div>
+</div>

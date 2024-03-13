@@ -1,0 +1,228 @@
+.container-chat {
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    //  background-color: red;
+    flex-direction: column;
+
+    .titulo {
+        color: #0256BF;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .sec-postulantes {
+        background-color: white;
+        width: 300px;
+        border: 1px solid gainsboro;
+
+        select {
+            background-color: #E5F4FF;
+            color: #0256BF;
+            font-size: 14px;
+            font-weight: 500;
+            width: 268px;
+        }
+
+        .contenedor-lista {
+            height: 378px;
+            overflow-y: scroll;
+        }
+
+        .titulo-pos {
+            width: 100%;
+            color: #1D214E;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding-left: 5px;
+            // border: 1px solid black;
+        }
+
+        .input-text {
+            width: 268px;
+            border-color: #F6F6FF;
+        }
+
+        .texto-lista {
+            color: #3D4279;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .seleccionado {
+            border: 1px solid grey;
+        }
+
+
+    }
+
+    .sec-chatbot {
+        background-color: white;
+        width: 500px;
+        border: 1px solid gainsboro;
+
+        .container-msj {
+            background-color: white;
+            padding: 10px;
+
+            .container-scroll {
+                overflow-y: scroll;
+                min-height: 400px;
+                max-height: 400px;
+            }
+
+            .mensajes {
+                margin-top: 5px;
+                margin-bottom: 5px;
+
+                .texto {
+                    background-color: #F6F6FF;
+                    padding: 10px;
+                    padding-left: 20px;
+                    color: #3D4279;
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+            }
+
+            .input_msj {
+                input {
+                    background-color: #F6F6FF;
+                    border-radius: 24px;
+                    height: 48px;
+                }
+            }
+
+        }
+
+    }
+
+    .sec-perfil {
+        background-color: white;
+        width: 270px;
+        border: 1px solid gainsboro;
+
+        .nombre {
+            text-align: center;
+            color: #3D4279;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .foto {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .telefono {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1D214E;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .puesto-texto {
+            text-align: center;
+            margin-bottom: 2px;
+            color: #3D4279;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .puesto-nombre {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #7792B9;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .contenedor-botones {
+            text-align: center;
+            margin-bottom: 10px;
+
+            .boton-1 {
+                width: 177px;
+            }
+        }
+
+
+    }
+
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    overflow-y: scroll;
+    background: #F8F8FF;
+    box-shadow: inset 0 0 4px #707070;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #E7E7F3;
+    border-radius: 10px;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .container-chat {
+
+        margin-left: 5px;
+        margin-right: 5px;
+
+        .sec-postulantes {
+            width: 100%;
+
+            select {
+                width: 100%;
+            }
+
+            .titulo-pos {
+                width: 100%;
+            }
+
+            .input-text {
+                width: 100%;
+            }
+
+
+        }
+
+        .sec-chatbot {
+            width: 95%;
+        }
+
+        .sec-perfil {
+            width: 95%;
+            margin: 5px;
+
+            .contenedor-botones {
+                width: 100%;
+
+                .boton-1 {
+                    width: 210px;
+                }
+            }
+
+           
+        }
+    }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
