@@ -25,6 +25,7 @@ export class EmpleosMgComponent implements OnInit, OnDestroy {
   dataEmpleos: any[] = [];
   bol_loading = false;
   bol_deleting = false;
+  bol_msgDelete = false;
   listaIdsDelete: number[] = [];
   vEmpLogo = '';
 
@@ -107,7 +108,7 @@ export class EmpleosMgComponent implements OnInit, OnDestroy {
     this.router.navigate([`/manager/candidatos/${empleo.id_job_description}`]);
   }
 
-  abrirModalEliminar(){
+  abrirModalEliminar() {
     if (this.listaIdsDelete.length == 0) {
       alert('seleccione un empleo');
       return;
@@ -116,7 +117,7 @@ export class EmpleosMgComponent implements OnInit, OnDestroy {
   }
 
   eliminarEmpleo() {
-    
+
     const req: IReqEliEmpleosPorIds = {
       ids: [...this.listaIdsDelete],
     };
@@ -127,6 +128,17 @@ export class EmpleosMgComponent implements OnInit, OnDestroy {
         next: (resp) => {
           console.log(resp);
           this.bol_deleting = false;
+          this.bol_msgDelete = true;
+
+          this.cargarEmpleos();
+         
+
+          setTimeout(() => {
+            this.bol_msgDelete = false;
+            setTimeout(() => {              
+              $('#modalEliminar').modal('hide');
+            }, 1000);
+          }, 2000);
         },
         error: (err) => {
           console.log(err);

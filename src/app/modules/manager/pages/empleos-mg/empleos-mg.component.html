@@ -358,6 +358,7 @@
           style="color: #5f7494; font-size: 14px; font-weight: 400"
         >
           <p>Recuerda que no podras recuperarlo una vez que lo elimines</p>
+          
         </div>
         <div class="text-center w-100 mb-5">
           <button
@@ -388,7 +389,19 @@
           >
             No, Volver
           </button>
+         
+
         </div>
+        <div class="text-center w-100 mb-5" *ngIf="bol_deleting">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="text-danger">Eliminando empleo...</div>
+        </div>
+        <div class="text-center w-100 mb-5" *ngIf="bol_msgDelete">
+          <p class="text-primary">Empleo eliminado!</p>
+        </div>
+
       </div>
     </div>
   </div>

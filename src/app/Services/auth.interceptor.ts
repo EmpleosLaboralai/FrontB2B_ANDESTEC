@@ -23,7 +23,10 @@ console.log('run interceptor');
 
       console.log('req.url=>',req.url);
       if(req.url.includes('google') || req.url.includes('validateToken')
-      || req.url.includes('getPublicJobsById')  ){
+      || req.url.includes('getPublicJobsById')
+      || req.url.includes('registerUser')
+      || req.url.includes('login')
+      || req.url.includes('validateExistsUser')  ){
         return next.handle(req);
       }
        
