@@ -1,4 +1,4 @@
-import { Component, OnDestroy, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { EmpresaService } from '../../services/empresa.service';
 import { IReqListarCandiPorEmpleo } from '../../interfaces/IReqListarCandiPorEmpleo';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { EventMediatorService } from '../../services/event-mediator.service';
 import { IResListarEmpleosOpenCloseDet } from '../../interfaces/IResListarEmpleosOpenClose';
 import { ITypeDevice } from 'src/app/interfaces/ITypeDevice';
+import { environment } from 'src/environments/environment';
+import { LocalstorageService } from '../../services/localstorage.service';
 
 declare var $: any;
 
@@ -15,11 +17,12 @@ declare var $: any;
   templateUrl: './empleo-candidatos.component.html',
   styleUrls: ['./empleo-candidatos.component.scss'],
 })
-export class EmpleoCandidatosComponent implements OnDestroy {
+export class EmpleoCandidatosComponent implements OnDestroy, OnInit {
   private router = inject(Router);
   private empresaService = inject(EmpresaService);
   private activatedRoute = inject(ActivatedRoute);
   private mediatorService = inject(EventMediatorService);
+  private storageService = inject(LocalstorageService);
 
   lstCandidatos: IResListarCandiPorEmpleoDet[] = [];
   suscriptionListar!: Subscription;
@@ -33,20 +36,26 @@ export class EmpleoCandidatosComponent implements OnDestroy {
     isTablet: false,
   };
 
-  constructor() {
+  vEmpLogo = '';
+
+
+  constructor() {    
+
     this.jobId = this.activatedRoute.snapshot.params['jobId'];
     this.cargarCandidatosPorEmpleo(this.jobId);
-    this.unsuscriptionMediator = this.mediatorService.empleoChanged.subscribe({
-      next: (resp) => {
-        this.objEmpleo = resp;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        console.log('complete cargarCandidatosPorEmpleo()');
-      },
-    });
+    // this.unsuscriptionMediator = this.mediatorService.empleoChanged.subscribe({
+    //   next: (resp) => {
+    //     this.objEmpleo = resp;
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   },
+    //   complete: () => {
+    //     console.log('complete cargarCandidatosPorEmpleo()');
+    //   },
+    // });
+
+    this.objEmpleo = this.storageService.getStorage('tempdata.ai');
 
     this.unsuscriptionDevice = this.mediatorService.deviceChanged.subscribe({
       next: (resp) => {
@@ -62,6 +71,10 @@ export class EmpleoCandidatosComponent implements OnDestroy {
 
 
 
+  }
+  ngOnInit(): void {
+    const objLogin = JSON.parse(localStorage.getItem('laboral.ai')!);
+    this.vEmpLogo = environment.epImagesPublic + '/' + objLogin.company.logo;
   }
 
   ngOnDestroy(): void {

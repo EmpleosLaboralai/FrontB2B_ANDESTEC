@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { EventMediatorService } from '../../services/event-mediator.service';
 import { environment } from 'src/environments/environment';
 import { IResListarEmpleosOpenCloseDet } from '../../interfaces/IResListarEmpleosOpenClose';
+import { LocalstorageService } from '../../services/localstorage.service';
 
 declare var $: any;
 
@@ -19,6 +20,7 @@ export class EmpleosMgComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private empresaService = inject(EmpresaService);
   private mediatorService = inject(EventMediatorService);
+  private storageService = inject(LocalstorageService);
 
   bol_tabAbierto = true;
   vIdUsuario = 0;
@@ -31,6 +33,7 @@ export class EmpleosMgComponent implements OnInit, OnDestroy {
 
   suscriptionEli!: Subscription;
   suscriptionListado!: Subscription;
+
 
   ngOnInit(): void {
     const objLogin = JSON.parse(localStorage.getItem('laboral.ai')!);
@@ -104,7 +107,7 @@ export class EmpleosMgComponent implements OnInit, OnDestroy {
 
   verCandidatos(empleo: IResListarEmpleosOpenCloseDet) {
     this.mediatorService.notifyOnEmpleoChanged(empleo);
-
+    this.storageService.saveStorage('tempdata.ai',empleo);
     this.router.navigate([`/manager/candidatos/${empleo.id_job_description}`]);
   }
 

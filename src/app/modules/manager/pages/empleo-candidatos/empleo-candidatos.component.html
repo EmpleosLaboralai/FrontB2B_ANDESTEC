@@ -19,10 +19,19 @@
     [ngClass]="{ 'flex-column': typeDevice.isMobile }"
   >
     <div class="d-flex mr-3" [ngClass]="{ 'mb-2': typeDevice.isMobile }">
-      <img src="assets/images/logo_rappi.png" width="40px" height="40px" />
+      
+      <img     *ngIf="vEmpLogo != ''"
+                [src]="vEmpLogo"
+                width="36px"
+                height="36px"
+                class="rounded"
+              />
+      <!-- <img src="assets/images/logo_rappi.png" width="40px" height="40px" /> -->
+
+
       <div class="ml-2">
-        <div class="titulo">{{ objEmpleo.job_title }}</div>
-        <div class="sub-titulo">{{ objEmpleo.location }}</div>
+        <div class="titulo">{{ objEmpleo.job_title  }}</div>
+        <div class="sub-titulo">{{ objEmpleo.location  }}</div>
         <div class="sub-titulo">
           Publicado {{ objEmpleo.register_date | date }}
         </div>
@@ -120,7 +129,7 @@
           <!-- {{ item.potencial }} -->
           <span
             class="badge badge-light texto-badge"
-            *ngFor="let etiqueta of item.potencial.split(' ')"
+            *ngFor="let etiqueta of item.potencial.split(',')"
             >{{ etiqueta }}
           </span>
         </td>
@@ -272,7 +281,7 @@
           <div>
             <span
             class="badge badge-light texto-badge"
-            *ngFor="let etiqueta of item.potencial.split(' ')"
+            *ngFor="let etiqueta of item.potencial.split(',')"
             >{{ etiqueta }}
           </span>
           </div>
